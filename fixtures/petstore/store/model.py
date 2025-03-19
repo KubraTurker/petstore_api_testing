@@ -7,6 +7,10 @@ fake = Faker()
 
 @attr.s
 class Order(BaseClass):
+    """
+    Represents an order for a pet.
+    """
+
     id: int = attr.ib(default=fake.random_int(min=1, max=10000))
     petId: int = attr.ib(default=fake.random_int(min=1, max=10000))
     quantity: int = attr.ib(default=fake.random_int(min=1, max=10))

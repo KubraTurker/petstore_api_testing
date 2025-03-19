@@ -1,5 +1,6 @@
 import time
 import pytest
+import logging
 
 from fixtures.petstore.store.model import Order
 
@@ -9,73 +10,92 @@ class TestStore:
     @pytest.mark.positive
     def test_add_order(self, app):
         """
-        Yeni bir sipariş ekleme testi.
-        Adımlar:
-            1. Yeni bir sipariş nesnesi oluştur.
-            2. Siparişi mağazaya ekle.
-            3. Yanıtın 200 (veya 201) olduğunu doğrula.
-            4. Yanıttaki sipariş kimliğini doğrula.
+        Test for adding a new order.
+        Steps:
+            1. Create a new order object.
+            2. Add the order to the store.
+            3. Verify that the response status code is 200 (or 201).
+            4. Validate the order ID in the response.
         """
         data = Order.random()
         res = app.store_api.add_order(data=data)
 
-        assert res.status_code == 200  # veya 201
-        assert isinstance(res.data, Order), "Yanıt verisi Order nesnesi değil"
-        assert res.data.id == data.id, "Sipariş kimliği eşleşmiyor"
+        assert res.status_code == 200
+        assert isinstance(res.data, Order), "Response data is not an Order object"
+        assert res.data.id == data.id, "Order ID does not match"
 
     @pytest.mark.positive
     def test_get_order_by_id(self, app):
         """
-        Sipariş ID ile alma testi.
-        Adımlar:
-            1. Yeni bir sipariş nesnesi oluştur.
-            2. Siparişi mağazaya ekle.
-            3. Siparişi ID ile getir.
-            4. Yanıtın 200 olduğunu doğrula.
-            5. Getirilen siparişin ID'sini doğrula.
+        Test for retrieving an order by its ID.
+        Steps:
+            1. Create a new order object.
+            2. Add the order to the store.
+            3. Retrieve the order by its ID.
+            4. Verify that the response status code is 200.
+            5. Validate the retrieved order's ID.
         """
         data = Order.random()
         res_add = app.store_api.add_order(data=data)
-        assert res_add.status_code == 200  # veya 201
+        assert res_add.status_code == 200
+
+        time.sleep(5)
 
         res_get = app.store_api.get_order_by_id(
             order_id=res_add.data.id, type_response=Order
         )
 
-        time.sleep(2)
+        time.sleep(5)
 
-        assert res_get.status_code == 200, "Get isteği başarısız"
-        assert isinstance(res_get.data, Order), "Yanıt verisi Order nesnesi değil"
-        assert res_get.data.id == data.id, "Sipariş kimliği eşleşmiyor"
+        assert res_get.status_code == 200, "GET request failed"
+        assert isinstance(res_get.data, Order), "Response data is not an Order object"
+        assert res_get.data.id == data.id, "Order ID does not match"
+
+    @pytest.mark.negative
+    def test_get_nonexistent_order(self, app):
+        """
+        Test for retrieving a non-existent order.
+        Steps:
+            1. Try to get an order with a random or invalid ID.
+            2. Verify that the response status code is 404.
+        """
+        invalid_order_id = 999999
+        res_get = app.store_api.get_order_by_id(order_id=invalid_order_id)
+
+        assert res_get.status_code == 404, "Expected 404 for non-existent order"
 
     @pytest.mark.positive
     def test_delete_order(self, app):
         """
-        Sipariş silme testi.
-        Adımlar:
-            1. Yeni bir sipariş nesnesi oluştur.
-            2. Siparişi mağazaya ekle.
-            3. Siparişi sil.
-            4. Silinen siparişi ID ile çağır.
-            5. Silme işleminin başarılı olduğunu doğrula.
-            6. Silinen siparişin artık mevcut olmadığını doğrula (404 dönmeli).
+        Test for deleting an order.
+        Steps:
+            1. Create a new order object.
+            2. Add the order to the store.
+            3. Delete the order.
+            4. Try to retrieve the deleted order by ID.
+            5. Verify that the deletion was successful.
+            6. Confirm that the deleted order no longer exists (should return 404).
         """
         data = Order.random()
         res_add = app.store_api.add_order(data=data)
-        assert res_add.status_code == 200  # veya 201
+        assert res_add.status_code == 200  # or 201
 
         time.sleep(5)
 
         res_delete = app.store_api.delete_order(order_id=res_add.data.id)
-        assert res_delete.status_code == 200, "Silme işlemi başarısız"
+        assert res_delete.status_code == 200, "Deletion failed"
 
-        print(f"Silme yanıtı: {res_delete.json()}")
+        logging.info(f"Delete response: {res_delete.json()}")
 
         res_get = app.store_api.get_order_by_id(order_id=data.id)
 
+        time.sleep(5)
+
         if res_get.status_code == 200:
-            print(f"Sipariş silindikten sonra hala mevcut, yanıt: {res_get.json()}")
+            logging.warning(
+                f"Order still exists after deletion, response: {res_get.json()}"
+            )
 
         assert (
             res_get.status_code == 404
-        ), f"Sipariş silindikten sonra hala mevcut. Dönen durum kodu: {res_get.status_code}"
+        ), f"Order still exists after deletion. Returned status code: {res_get.status_code}"

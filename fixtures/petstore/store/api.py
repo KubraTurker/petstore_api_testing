@@ -1,5 +1,6 @@
 from requests import Response
 
+from common.deco import logging as log
 from fixtures.petstore.store.model import Order
 from fixtures.validator import Validator
 
@@ -8,21 +9,24 @@ class StoreAPI(Validator):
 
     def __init__(self, app):
         """
-        StoreAPI sınıfı, mağaza ile ilgili API işlemleri için yardımcı metotları içerir.
-        :param app: Uygulama nesnesi, API isteği yapmak için client'ı sağlar.
+        The StoreAPI class contains helper methods for store-related API operations.
+
+        :param app: The application object that provides the client for making API requests.
         """
         self.app = app
 
-    POST_ORDER = "/store/order"  # Sipariş eklemek için kullanılan endpoint
-    GET_ORDER = "/store/order/{}"  # Sipariş almak için kullanılan endpoint
-    DELETE_ORDER = "/store/order/{}"  # Sipariş silmek için kullanılan endpoint
+    POST_ORDER = "/store/order"  # Endpoint used to add a new order
+    GET_ORDER = "/store/order/{}"  # Endpoint used to retrieve an order
+    DELETE_ORDER = "/store/order/{}"  # Endpoint used to delete an order
 
+    @log("Adding a new order")
     def add_order(self, data: Order, type_response=Order) -> Response:
         """
-        Yeni bir sipariş ekler.
-        :param data: Order modelinden bir nesne. Bu, eklenecek siparişin verilerini içerir.
-        :param type_response: (opsiyonel) Dönen yanıtı hangi tipe dönüştürmek istediğinizi belirler (varsayılan olarak Order).
-        :return: API'nin döndürdüğü yanıt (Response nesnesi).
+        Adds a new order.
+
+        :param data: An object from the Order model. This contains the data for the order to be added.
+        :param type_response: (optional) Determines which type to convert the response to (Order by default).
+        :return: The response returned by the API (Response object).
         """
         response = self.app.client.request(
             method="POST",
@@ -31,12 +35,14 @@ class StoreAPI(Validator):
         )
         return self.structure(response, type_response=type_response)
 
+    @log("Retrieving order by ID")
     def get_order_by_id(self, order_id: int, type_response=Order) -> Response:
         """
-        Verilen ID ile bir siparişi alır.
-        :param order_id: Siparişin benzersiz kimliği (ID).
-        :param type_response: (opsiyonel) Dönen yanıtı hangi tipe dönüştürmek istediğinizi belirler (varsayılan olarak Order).
-        :return: Siparişin bilgilerini içeren yanıt.
+        Retrieves an order with the given ID.
+
+        :param order_id: The unique identifier (ID) of the order.
+        :param type_response: (optional) Determines which type to convert the response to (Order by default).
+        :return: The response containing the order's information.
         """
         response = self.app.client.request(
             method="GET",
@@ -44,11 +50,13 @@ class StoreAPI(Validator):
         )
         return self.structure(response, type_response=type_response)
 
+    @log("Deleting order by ID")
     def delete_order(self, order_id: int) -> Response:
         """
-        Belirli bir siparişi sipariş ID'sine göre siler.
-        :param order_id: Silinecek siparişin benzersiz kimliği (ID).
-        :return: API'nin döndürdüğü yanıt (Response nesnesi).
+        Deletes a specific order by order ID.
+
+        :param order_id: The unique identifier (ID) of the order to be deleted.
+        :return: The response returned by the API (Response object).
         """
         response = self.app.client.request(
             method="DELETE",
