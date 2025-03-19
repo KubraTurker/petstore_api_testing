@@ -50,6 +50,9 @@ class TestPet:
             500,
         ], f"Expected: 400 or 500, Received: {response.status_code}"
 
+    import pytest
+    import time
+
     @pytest.mark.positive
     def test_get_pet_by_id(self, app):
         """
@@ -57,24 +60,28 @@ class TestPet:
         Steps:
             1. Create a new pet object.
             2. Add pet to the store.
-            3. Retrieve the pet by its ID.
+            3. Retrieve the pet by its ID using a retry mechanism.
             4. Assert that the response status code is 200.
             5. Assert that the retrieved pet has the same ID and name.
         """
         data = Pet.random()
 
         res_add = app.pet_api.add_pet(data=data, type_response=Pet)
-        assert res_add.status_code == 200
+        assert res_add.status_code == 200, "Failed to add pet"
 
-        time.sleep(5)
+        def wait_for_pet_to_appear(pet_id, retries=5, delay=1):
+            for _ in range(retries):
+                res_get = app.pet_api.get_by_id_pet(pet_id=pet_id, type_response=Pet)
+                if res_get.status_code == 200:
+                    return res_get
+                time.sleep(delay)
+            return res_get
 
-        res_get = app.pet_api.get_by_id_pet(pet_id=res_add.data.id, type_response=Pet)
-
-        time.sleep(5)
+        res_get = wait_for_pet_to_appear(res_add.data.id)
 
         assert res_get.status_code == 200, "Get request failed"
         assert isinstance(res_get.data, Pet), "Response data is not a Pet object"
-
+        assert res_get.data.id == res_add.data.id, "Pet ID mismatch"
         assert res_get.data.name == data.name, "Pet name mismatch"
 
     @pytest.mark.negative
