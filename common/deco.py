@@ -48,12 +48,14 @@ def logging(message):
                 else:
                     log_response += f", body:{json.dumps(body)}"
                 logger.info(log_response)
+
             except JSONDecodeError:
                 if len(res.text) > 120:
                     log_response += f", body: {res.text[:120]}..."
                 else:
                     log_response += f", body: {res.text}"
                 logger.info(log_response)
+
             return res
 
         return inner

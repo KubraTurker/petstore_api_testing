@@ -1,4 +1,5 @@
 import attr
+
 from faker import Faker
 from fixtures.base import BaseClass
 

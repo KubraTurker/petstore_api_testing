@@ -1,6 +1,6 @@
 import time
-
 import pytest
+
 from fixtures.petstore.user.model import User
 
 
@@ -46,20 +46,19 @@ class TestUser:
         created_user = app.user_api.add_user(data)
         assert created_user.status_code == 200, "Kullanıcı oluşturulamadı"
 
-        # 2. Kullanıcıyı güncellemeden önceki veriyi al ve değiştir
-        updated_user = created_user.data.to_dict()  # Mevcut kullanıcı bilgilerini al
+
+        updated_user = created_user.data.to_dict()
         updated_user["firstName"] = "UpdatedFirstName"
         updated_user["lastName"] = "UpdatedLastName"
 
-        # 3. Güncelleme işlemini gerçekleştir
+
         response = app.user_api.update_user(User(**updated_user))
         assert response.status_code == 200, "Kullanıcı güncellenemedi"
 
-        # 4. API'den güncellenmiş kullanıcı bilgilerini al
         res_get = app.user_api.get_user_by_username(username=updated_user["username"])
         assert res_get.status_code == 200, "Güncellenmiş kullanıcı bilgileri alınamadı"
 
-        # 5. Güncellenmiş bilgileri doğrula
+
         get_user_data = res_get.data.to_dict()
         assert (
             get_user_data["firstName"] == "UpdatedFirstName"

@@ -1,4 +1,5 @@
 from requests import Response
+
 from common.deco import logging as log
 from fixtures.petstore.pet.model import Pet
 from fixtures.validator import Validator

@@ -4,7 +4,6 @@ import pytest
 
 from fixtures.petstore.pet.model import Pet, ApiResponse, Category
 
-
 class TestPet:
 
     @pytest.mark.positive
