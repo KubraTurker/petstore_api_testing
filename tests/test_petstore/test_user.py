@@ -46,18 +46,15 @@ class TestUser:
         created_user = app.user_api.add_user(data)
         assert created_user.status_code == 200, "Kullanıcı oluşturulamadı"
 
-
         updated_user = created_user.data.to_dict()
         updated_user["firstName"] = "UpdatedFirstName"
         updated_user["lastName"] = "UpdatedLastName"
-
 
         response = app.user_api.update_user(User(**updated_user))
         assert response.status_code == 200, "Kullanıcı güncellenemedi"
 
         res_get = app.user_api.get_user_by_username(username=updated_user["username"])
         assert res_get.status_code == 200, "Güncellenmiş kullanıcı bilgileri alınamadı"
-
 
         get_user_data = res_get.data.to_dict()
         assert (
