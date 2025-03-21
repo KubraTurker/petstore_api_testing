@@ -1,5 +1,5 @@
 # Petstore API Test Automation
-- [ ] This project is an API Test Automation framework developed to test the Swagger Petstore API. It utilizes Python, Pytest, Requests to thoroughly test the API's endpoints.
+This project is an API Test Automation framework developed to test the Swagger Petstore API. It utilizes Python, Pytest, Requests to thoroughly test the API's endpoints.
 ## About the Project
 The Petstore API is a system for managing users and pets in an e-commerce environment. This project includes tests for the following API operations:
 
