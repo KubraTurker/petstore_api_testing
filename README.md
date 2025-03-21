@@ -40,15 +40,16 @@ The following technologies and libraries are used in this project:
 
 **1.Install Dependencies**
 
+```commandline
 pip install -r requirements.txt
-
+```
 **2.Run Tests**
 
 To execute the tests:
-
+```commandline
 pytest
-
-📌 Test Scenarios
+```
+## Test Scenarios
 
 This project contains tests for various Swagger Petstore API endpoints. Below is an overview of the tested endpoints:
 
