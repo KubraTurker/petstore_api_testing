@@ -7,6 +7,10 @@ fake = Faker()
 
 @attr.s
 class User(BaseClass):
+    """
+    Represents a user in the system.
+    """
+
     id: int = attr.ib(default=fake.random_int(min=1, max=1000))
     username: str = attr.ib(default=fake.user_name())
     firstName: str = attr.ib(default=fake.first_name())

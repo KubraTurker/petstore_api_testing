@@ -1,4 +1,6 @@
 from requests import Response
+
+from common.deco import logging as log
 from fixtures.petstore.user.model import User
 from fixtures.validator import Validator
 
@@ -7,24 +9,25 @@ class UserAPI(Validator):
 
     def __init__(self, app):
         """
-        UserAPI sınıfı, kullanıcı ile ilgili API işlemleri için yardımcı metotları içerir.
-        :param app: Uygulama nesnesi, API isteği yapmak için client'ı sağlar.
+        The UserAPI class contains helper methods for API operations related to users.
+        :param app: The application object that provides the client to make API requests.
         """
         self.app = app
 
-    POST_USER = "/user"  # Kullanıcı eklemek için kullanılan endpoint
-    GET_USER = "/user/{}"  # Kullanıcı almak için kullanılan endpoint
-    PUT_USER = "/user/{}"  # Kullanıcı güncellemek için kullanılan endpoint
-    DELETE_USER = "/user/{}"  # Kullanıcı silmek için kullanılan endpoint
-    LOGIN_USER = "/user/login"  # Kullanıcı giriş endpointi
-    LOGOUT_USER = "/user/logout"  # Kullanıcı çıkış endpointi
+    POST_USER = "/user"  # Endpoint used to add a user
+    GET_USER = "/user/{}"  # Endpoint used to get a user
+    PUT_USER = "/user/{}"  # Endpoint used to update a user
+    DELETE_USER = "/user/{}"  # Endpoint used to delete a user
+    LOGIN_USER = "/user/login"  # User login endpoint
+    LOGOUT_USER = "/user/logout"  # User logout endpoint
 
+    @log("Adding new user")
     def add_user(self, data: User, type_response=User) -> Response:
         """
-        Yeni bir kullanıcı ekler.
-        :param data: User modelinden bir nesne. Bu, eklenecek kullanıcının verilerini içerir.
-        :param type_response: (opsiyonel) Dönen yanıtı hangi tipe dönüştürmek istediğinizi belirler (varsayılan olarak User).
-        :return: API'nin döndürdüğü yanıt (Response nesnesi).
+        Adds a new user.
+        :param data: An object from the User model. This contains the data of the user to be added.
+        :param type_response: (optional) Specifies the type to convert the response to (default is User).
+        :return: The response returned by the API (Response object).
         """
         response = self.app.client.request(
             method="POST",
@@ -33,12 +36,13 @@ class UserAPI(Validator):
         )
         return self.structure(response, type_response=type_response)
 
+    @log("Getting user by username")
     def get_user_by_username(self, username: str, type_response=User) -> Response:
         """
-        Verilen kullanıcı adı ile bir kullanıcıyı alır.
-        :param username: Kullanıcının benzersiz adı.
-        :param type_response: (opsiyonel) Dönen yanıtı hangi tipe dönüştürmek istediğinizi belirler (varsayılan olarak User).
-        :return: Kullanıcı bilgilerini içeren yanıt.
+        Retrieves a user with the given username.
+        :param username: The unique username of the user.
+        :param type_response: (optional) Specifies the type to convert the response to (default is User).
+        :return: The response containing the user's information.
         """
         response = self.app.client.request(
             method="GET",
@@ -46,13 +50,13 @@ class UserAPI(Validator):
         )
         return self.structure(response, type_response=type_response)
 
+    @log("Updating user")
     def update_user(self, data: User, type_response=User) -> Response:
         """
-        Belirli bir kullanıcının bilgilerini günceller.
-        :param username: Güncellenecek kullanıcının adı.
-        :param data: Güncellenmiş kullanıcı bilgilerini içeren User nesnesi.
-        :param type_response: (opsiyonel) Dönen yanıtı hangi tipe dönüştürmek istediğinizi belirler.
-        :return: API'nin döndürdüğü yanıt (Response nesnesi).
+        Updates the information of a specific user.
+        :param data: A User object containing the updated user information.
+        :param type_response: (optional) Specifies the type to convert the response to.
+        :return: The response returned by the API (Response object).
         """
         response = self.app.client.request(
             method="PUT",
@@ -61,11 +65,12 @@ class UserAPI(Validator):
         )
         return self.structure(response, type_response=type_response)
 
+    @log("Deleting user")
     def delete_user(self, username: str) -> Response:
         """
-        Belirli bir kullanıcıyı kullanıcı adına göre siler.
-        :param username: Silinecek kullanıcının adı.
-        :return: API'nin döndürdüğü yanıt (Response nesnesi).
+        Deletes a specific user by their username.
+        :param username: The username of the user to be deleted.
+        :return: The response returned by the API (Response object).
         """
         response = self.app.client.request(
             method="DELETE",
@@ -73,30 +78,32 @@ class UserAPI(Validator):
         )
         return response
 
+    @log("User login")
     def login(self, username: str, password: str) -> Response:
         """
-        Kullanıcıyı kullanıcı adı ve şifre ile giriş yapar.
-        :param username: Kullanıcının kullanıcı adı.
-        :param password: Kullanıcının şifresi.
-        :return: API yanıtı (Response nesnesi) içerir.
+        Logs the user in with the given username and password.
+        :param username: The user's username.
+        :param password: The user's password.
+        :return: The API response (Response object).
         """
         response = self.app.client.request(
-            method="GET",  # Assuming GET method for login
+            method="GET",
             url=f"{self.app.url}{self.LOGIN_USER}",
             params={
                 "username": username,
                 "password": password,
-            },  # Using query parameters for GET
+            },
         )
         return response
 
+    @log("User logout")
     def logout(self) -> Response:
         """
-        Mevcut kullanıcıyı çıkış yapar.
-        :return: API yanıtı (Response nesnesi) içerir.
+        Logs out the current user.
+        :return: The API response (Response object).
         """
         response = self.app.client.request(
-            method="GET",  # Assuming GET method for logout
+            method="GET",
             url=f"{self.app.url}{self.LOGOUT_USER}",
         )
         return response
