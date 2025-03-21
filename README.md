@@ -5,26 +5,26 @@ The Petstore API is a system for managing users and pets in an e-commerce enviro
 
 ### **1. User API Tests**
 
-- Add a new user
-- Retrieve user details
-- Update an existing user
-- Delete a user
-- User login and logout 
-- Retrieve and delete a non-existent user (negative tests)
+- [x] Add a new user
+- [x] Retrieve user details
+- [x] Update an existing user
+- [x] Delete a user
+- [x] User login and logout 
+- [x] Retrieve and delete a non-existent user (negative tests)
 
 ### **2. Pet API Tests**
-- Add a new pet
-- Update pet details
-- Retrieve pet information
-- Delete a pet
-- Retrieve a non-existent pet (negative test)
+- [x] Add a new pet
+- [x] Update pet details
+- [x] Retrieve pet information
+- [x] Delete a pet
+- [x] Retrieve a non-existent pet (negative test)
 
 ### **3.Store API Tests**
 
-- Create an order
-- Retrieve order details
-- Delete an order
-- Retrieve and delete a non-existent order (negative test)
+- [x] Create an order
+- [x] Retrieve order details
+- [x] Delete an order
+- [x] Retrieve and delete a non-existent order (negative test)
 
 **Goal:** To ensure that the Petstore API functions correctly and reliably through automated tests.
 
