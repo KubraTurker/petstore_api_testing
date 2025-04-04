@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '30 20 * * *'  # Her gün UTC 20:30'da (Türkiye saati ile 23:30) çalıştır
+    - cron: '30 20 * * *' 
   workflow_dispatch:  
 permissions:
   contents: read
