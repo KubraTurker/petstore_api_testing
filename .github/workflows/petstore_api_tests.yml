@@ -1,15 +1,13 @@
 # Petstore API Testing Workflow
 name: Petstore API Tests
-
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '30 20 * * *'  
+    - cron: '30 20 * * *'  # Her gün UTC 20:30'da (Türkiye saati ile 23:30) çalıştır
   workflow_dispatch:  
-
 permissions:
   contents: read
   
