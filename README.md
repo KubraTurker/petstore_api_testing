@@ -42,6 +42,7 @@ The following technologies and libraries are used in this project:
 
 ```commandline
 pip install -r requirements.txt
+brew install allure 
 ```
 **2.Run Tests**
 
@@ -49,6 +50,16 @@ To execute the tests:
 ```commandline
 pytest
 ```
+or if you want to use Allure Reports
+```commandline
+python -m pytest --alluredir allure-results
+```
+
+To view Allure Reports
+```commandline
+allure serve allure-results
+```
+
 ## Test Scenarios
 
 This project contains tests for various Swagger Petstore API endpoints. Below is an overview of the tested endpoints:
@@ -76,3 +87,9 @@ This project contains tests for various Swagger Petstore API endpoints. Below is
 - Get Order Information: Retrieves order details using the order ID.
 - Delete Order: Ensures the order is successfully deleted.
 - Negative Tests: Ensures that retrieving a non-existent order ID returns a 404 error.
+
+
+# Setup
+```commandline
+
+```
