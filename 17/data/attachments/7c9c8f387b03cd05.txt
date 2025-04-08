@@ -1,0 +1,8 @@
+2025-04-08 15:39:02 INFO Retrieving pet by ID
+2025-04-08 15:39:02 INFO Request method: GET, url: https://petstore.swagger.io/v2/pet/999999999
+2025-04-08 15:39:02 INFO Response method: GET, url: https://petstore.swagger.io/v2/pet/999999999, status: 404, body:
+{
+    "code": 1,
+    "type": "error",
+    "message": "Pet not found"
+}

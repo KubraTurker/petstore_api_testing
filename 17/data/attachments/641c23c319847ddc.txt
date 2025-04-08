@@ -1,0 +1,46 @@
+2025-04-08 15:39:07 INFO Adding a new pet
+2025-04-08 15:39:07 INFO Request method: POST, url: https://petstore.swagger.io/v2/pet, body:
+{
+    "id": null,
+    "category": {
+        "id": 521,
+        "name": "say"
+    },
+    "name": "Stephen",
+    "photoUrls": [
+        "https://dummyimage.com/413x495"
+    ],
+    "tags": [],
+    "status": "sold"
+}
+2025-04-08 15:39:07 INFO Response method: POST, url: https://petstore.swagger.io/v2/pet, status: 200, body:
+{
+    "id": 9223372036854750501,
+    "category": {
+        "id": 521,
+        "name": "say"
+    },
+    "name": "Stephen",
+    "photoUrls": [
+        "https://dummyimage.com/413x495"
+    ],
+    "tags": [],
+    "status": "sold"
+}
+2025-04-08 15:39:11 INFO Deleting pet by ID
+2025-04-08 15:39:11 INFO Request method: DELETE, url: https://petstore.swagger.io/v2/pet/9223372036854750501
+2025-04-08 15:39:11 INFO Response method: DELETE, url: https://petstore.swagger.io/v2/pet/9223372036854750501, status: 200, body:
+{
+    "code": 200,
+    "type": "unknown",
+    "message": "9223372036854750501"
+}
+2025-04-08 15:39:11 INFO Delete response: {'code': 200, 'type': 'unknown', 'message': '9223372036854750501'}
+2025-04-08 15:39:11 INFO Retrieving pet by ID
+2025-04-08 15:39:11 INFO Request method: GET, url: https://petstore.swagger.io/v2/pet/None
+2025-04-08 15:39:11 INFO Response method: GET, url: https://petstore.swagger.io/v2/pet/None, status: 404, body:
+{
+    "code": 404,
+    "type": "unknown",
+    "message": "java.lang.NumberFormatException: For input string: \"None\""
+}

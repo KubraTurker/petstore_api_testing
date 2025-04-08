@@ -1,0 +1,1 @@
+{'id': None, 'category': Category(id=1, name='Test Category'), 'name': 'InvalidStatusPet', 'photoUrls': ['https://example.com/pet-photo.jpg'], 'tags': ['test', 'invalid'], 'status': 'invalid_status'}

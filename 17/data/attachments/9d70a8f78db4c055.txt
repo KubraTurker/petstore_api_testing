@@ -1,0 +1,50 @@
+2025-04-08 15:38:52 INFO Adding a new pet
+2025-04-08 15:38:52 INFO Request method: POST, url: https://petstore.swagger.io/v2/pet, body:
+{
+    "id": null,
+    "category": {
+        "id": 521,
+        "name": "say"
+    },
+    "name": "Stephen",
+    "photoUrls": [
+        "https://dummyimage.com/413x495"
+    ],
+    "tags": [],
+    "status": "sold"
+}
+2025-04-08 15:38:52 INFO Response method: POST, url: https://petstore.swagger.io/v2/pet, status: 200, body:
+{
+    "id": 9223372036854750495,
+    "category": {
+        "id": 521,
+        "name": "say"
+    },
+    "name": "Stephen",
+    "photoUrls": [
+        "https://dummyimage.com/413x495"
+    ],
+    "tags": [],
+    "status": "sold"
+}
+2025-04-08 15:39:02 INFO Retrieving pet by ID
+2025-04-08 15:39:02 INFO Request method: GET, url: https://petstore.swagger.io/v2/pet/9223372036854750495
+2025-04-08 15:39:02 INFO Response method: GET, url: https://petstore.swagger.io/v2/pet/9223372036854750495, status: 200, body:
+{
+    "id": 9223372036854750495,
+    "category": {
+        "id": 0,
+        "name": "string"
+    },
+    "name": "doggie",
+    "photoUrls": [
+        "string"
+    ],
+    "tags": [
+        {
+            "id": 0,
+            "name": "string"
+        }
+    ],
+    "status": "string"
+}

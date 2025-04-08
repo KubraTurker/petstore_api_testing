@@ -1,0 +1,26 @@
+2025-04-08 15:40:33 INFO Adding new user
+2025-04-08 15:40:33 INFO Request method: POST, url: https://petstore.swagger.io/v2/user, body:
+{
+    "id": 468,
+    "username": "randywilliams",
+    "firstName": "Jacqueline",
+    "lastName": "Bean",
+    "email": "landrybrian@example.org",
+    "password": "E^2Lua@bY$",
+    "phone": "3772515786",
+    "userStatus": 1
+}
+2025-04-08 15:40:33 INFO Response method: POST, url: https://petstore.swagger.io/v2/user, status: 200, body:
+{
+    "code": 200,
+    "type": "unknown",
+    "message": "468"
+}
+2025-04-08 15:40:38 INFO User login
+2025-04-08 15:40:38 INFO Request method: GET, url: https://petstore.swagger.io/v2/user/login?username=randywilliams&password=E%5E2Lua%40bY%24
+2025-04-08 15:40:38 INFO Response method: GET, url: https://petstore.swagger.io/v2/user/login?username=randywilliams&password=E%5E2Lua%40bY%24, status: 200, body:
+{
+    "code": 200,
+    "type": "unknown",
+    "message": "logged in user session:1744126838238"
+}

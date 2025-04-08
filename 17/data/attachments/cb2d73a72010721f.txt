@@ -1,0 +1,36 @@
+2025-04-08 15:39:31 INFO Adding a new order
+2025-04-08 15:39:32 INFO Request method: POST, url: https://petstore.swagger.io/v2/store/order, body:
+{
+    "id": 7526,
+    "petId": 482,
+    "quantity": 10,
+    "shipDate": "2019-07-30T05:58:23.731627",
+    "status": "placed",
+    "complete": false
+}
+2025-04-08 15:39:32 INFO Response method: POST, url: https://petstore.swagger.io/v2/store/order, status: 200, body:
+{
+    "id": 7526,
+    "petId": 482,
+    "quantity": 10,
+    "shipDate": "2019-07-30T05:58:23.731+0000",
+    "status": "placed",
+    "complete": false
+}
+2025-04-08 15:39:37 INFO Deleting order by ID
+2025-04-08 15:39:37 INFO Request method: DELETE, url: https://petstore.swagger.io/v2/store/order/7526
+2025-04-08 15:39:37 INFO Response method: DELETE, url: https://petstore.swagger.io/v2/store/order/7526, status: 200, body:
+{
+    "code": 200,
+    "type": "unknown",
+    "message": "7526"
+}
+2025-04-08 15:39:37 INFO Delete response: {'code': 200, 'type': 'unknown', 'message': '7526'}
+2025-04-08 15:39:37 INFO Retrieving order by ID
+2025-04-08 15:39:37 INFO Request method: GET, url: https://petstore.swagger.io/v2/store/order/7526
+2025-04-08 15:39:37 INFO Response method: GET, url: https://petstore.swagger.io/v2/store/order/7526, status: 404, body:
+{
+    "code": 1,
+    "type": "error",
+    "message": "Order not found"
+}
