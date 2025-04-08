@@ -1,0 +1,8 @@
+2025-04-08 15:35:06 INFO Getting user by username
+2025-04-08 15:35:06 INFO Request method: GET, url: https://petstore.swagger.io/v2/user/nonexistentuser123
+2025-04-08 15:35:06 INFO Response method: GET, url: https://petstore.swagger.io/v2/user/nonexistentuser123, status: 404, body:
+{
+    "code": 1,
+    "type": "error",
+    "message": "User not found"
+}

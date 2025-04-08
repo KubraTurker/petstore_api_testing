@@ -1,0 +1,1 @@
+{'id': 9223372036854750449, 'category': Category(id=66, name='water'), 'name': 'Brad', 'photoUrls': ['https://picsum.photos/517/654'], 'tags': [], 'status': 'available'}

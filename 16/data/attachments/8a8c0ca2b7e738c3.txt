@@ -1,0 +1,40 @@
+2025-04-08 15:34:25 INFO Adding a new order
+2025-04-08 15:34:25 INFO Request method: POST, url: https://petstore.swagger.io/v2/store/order, body:
+{
+    "id": 6791,
+    "petId": 1198,
+    "quantity": 4,
+    "shipDate": "1985-03-18T10:01:23.945892",
+    "status": "approved",
+    "complete": false
+}
+2025-04-08 15:34:25 INFO Response method: POST, url: https://petstore.swagger.io/v2/store/order, status: 200, body:
+{
+    "id": 6791,
+    "petId": 1198,
+    "quantity": 4,
+    "shipDate": "1985-03-18T10:01:23.945+0000",
+    "status": "approved",
+    "complete": false
+}
+2025-04-08 15:34:30 INFO Deleting order by ID
+2025-04-08 15:34:30 INFO Request method: DELETE, url: https://petstore.swagger.io/v2/store/order/6791
+2025-04-08 15:34:30 INFO Response method: DELETE, url: https://petstore.swagger.io/v2/store/order/6791, status: 200, body:
+{
+    "code": 200,
+    "type": "unknown",
+    "message": "6791"
+}
+2025-04-08 15:34:30 INFO Delete response: {'code': 200, 'type': 'unknown', 'message': '6791'}
+2025-04-08 15:34:30 INFO Retrieving order by ID
+2025-04-08 15:34:30 INFO Request method: GET, url: https://petstore.swagger.io/v2/store/order/6791
+2025-04-08 15:34:30 INFO Response method: GET, url: https://petstore.swagger.io/v2/store/order/6791, status: 200, body:
+{
+    "id": 6791,
+    "petId": 1198,
+    "quantity": 4,
+    "shipDate": "1985-03-18T10:01:23.945+0000",
+    "status": "approved",
+    "complete": false
+}
+2025-04-08 15:34:45 WARNING Order still exists after deletion, response: {'id': 6791, 'petId': 1198, 'quantity': 4, 'shipDate': '1985-03-18T10:01:23.945+0000', 'status': 'approved', 'complete': False}

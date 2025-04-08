@@ -1,0 +1,32 @@
+2025-04-08 15:34:11 INFO Adding a new pet
+2025-04-08 15:34:11 INFO Request method: POST, url: https://petstore.swagger.io/v2/pet, body:
+{
+    "id": null,
+    "category": {
+        "id": 66,
+        "name": "water"
+    },
+    "name": "Brad",
+    "photoUrls": [
+        "https://picsum.photos/517/654"
+    ],
+    "tags": [],
+    "status": "available"
+}
+2025-04-08 15:34:11 INFO Response method: POST, url: https://petstore.swagger.io/v2/pet, status: 200, body:
+{
+    "id": 9223372036854750456,
+    "category": {
+        "id": 66,
+        "name": "water"
+    },
+    "name": "Brad",
+    "photoUrls": [
+        "https://picsum.photos/517/654"
+    ],
+    "tags": [],
+    "status": "available"
+}
+2025-04-08 15:34:14 INFO Deleting pet by ID
+2025-04-08 15:34:15 INFO Request method: DELETE, url: https://petstore.swagger.io/v2/pet/9223372036854750456
+2025-04-08 15:34:15 INFO Response method: DELETE, url: https://petstore.swagger.io/v2/pet/9223372036854750456, status: 404, body:

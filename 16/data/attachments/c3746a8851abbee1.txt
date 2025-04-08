@@ -1,0 +1,19 @@
+2025-04-08 15:34:15 INFO Adding a new order
+2025-04-08 15:34:15 INFO Request method: POST, url: https://petstore.swagger.io/v2/store/order, body:
+{
+    "id": 6791,
+    "petId": 1198,
+    "quantity": 4,
+    "shipDate": "1985-03-18T10:01:23.945892",
+    "status": "approved",
+    "complete": false
+}
+2025-04-08 15:34:15 INFO Response method: POST, url: https://petstore.swagger.io/v2/store/order, status: 200, body:
+{
+    "id": 6791,
+    "petId": 1198,
+    "quantity": 4,
+    "shipDate": "1985-03-18T10:01:23.945+0000",
+    "status": "approved",
+    "complete": false
+}

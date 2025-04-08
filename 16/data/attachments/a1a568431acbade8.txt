@@ -1,0 +1,24 @@
+2025-04-08 15:33:56 INFO Adding a new pet
+2025-04-08 15:33:56 INFO Request method: POST, url: https://petstore.swagger.io/v2/pet, body:
+{
+    "id": null,
+    "category": {
+        "id": 1,
+        "name": "Test Category"
+    },
+    "name": "InvalidStatusPet",
+    "photoUrls": [
+        "https://example.com/pet-photo.jpg"
+    ],
+    "tags": [
+        "test",
+        "invalid"
+    ],
+    "status": "invalid_status"
+}
+2025-04-08 15:33:56 INFO Response method: POST, url: https://petstore.swagger.io/v2/pet, status: 500, body:
+{
+    "code": 500,
+    "type": "unknown",
+    "message": "something bad happened"
+}

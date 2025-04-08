@@ -1,0 +1,26 @@
+2025-04-08 15:34:50 INFO Adding new user
+2025-04-08 15:34:51 INFO Request method: POST, url: https://petstore.swagger.io/v2/user, body:
+{
+    "id": 293,
+    "username": "darrensimpson",
+    "firstName": "Kari",
+    "lastName": "Dickerson",
+    "email": "hmcdaniel@example.com",
+    "password": "69AxFliV&Z",
+    "phone": "001-518-360-4172x9739",
+    "userStatus": 1
+}
+2025-04-08 15:34:51 INFO Response method: POST, url: https://petstore.swagger.io/v2/user, status: 200, body:
+{
+    "code": 200,
+    "type": "unknown",
+    "message": "293"
+}
+2025-04-08 15:35:01 INFO Getting user by username
+2025-04-08 15:35:01 INFO Request method: GET, url: https://petstore.swagger.io/v2/user/darrensimpson
+2025-04-08 15:35:01 INFO Response method: GET, url: https://petstore.swagger.io/v2/user/darrensimpson, status: 404, body:
+{
+    "code": 1,
+    "type": "error",
+    "message": "User not found"
+}

@@ -1,0 +1,8 @@
+2025-04-08 15:35:31 INFO User logout
+2025-04-08 15:35:31 INFO Request method: GET, url: https://petstore.swagger.io/v2/user/logout
+2025-04-08 15:35:31 INFO Response method: GET, url: https://petstore.swagger.io/v2/user/logout, status: 200, body:
+{
+    "code": 200,
+    "type": "unknown",
+    "message": "ok"
+}

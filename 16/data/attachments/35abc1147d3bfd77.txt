@@ -1,0 +1,1 @@
+{'id': 293, 'username': 'darrensimpson', 'firstName': 'Kari', 'lastName': 'Dickerson', 'email': 'hmcdaniel@example.com', 'password': '69AxFliV&Z', 'phone': '001-518-360-4172x9739', 'userStatus': 1}

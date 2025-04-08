@@ -1,0 +1,105 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"
+        Test for adding a new order.
+        Steps:
+            1. Create a new order object.
+            2. Add the order to the store.
+            3. Verify that the response status code is 200 (or 201).
+            4. Validate the order ID in the response.
+        ","51","Add a new order to the store","tests.test_petstore","Tue Apr 08 15:34:15 GMT 2025","passed","Tue Apr 08 15:34:15 GMT 2025","TestStore","test_store","",""
+"","15179","Retrieve a user by username","tests.test_petstore","Tue Apr 08 15:34:50 GMT 2025","failed","Tue Apr 08 15:35:06 GMT 2025","TestUser","test_user","",""
+"","212","Attempt to delete a non-existent user","tests.test_petstore","Tue Apr 08 15:35:26 GMT 2025","passed","Tue Apr 08 15:35:26 GMT 2025","TestUser","test_user","",""
+"
+        Test for retrieving a non-existent order.
+        Steps:
+            1. Try to get an order with a random or invalid ID.
+            2. Verify that the response status code is 404.
+        ","98","Get non-existent order should return 404","tests.test_petstore","Tue Apr 08 15:34:25 GMT 2025","passed","Tue Apr 08 15:34:25 GMT 2025","TestStore","test_store","",""
+"
+        Test for adding a new pet.
+        Steps:
+            1. Create a new pet object.
+            2. Add pet to the store.
+            3. Assert that the status code is 200 (or 201).
+            4. Assert that the response contains the pet ID and name.
+        ","180","Add a new pet to the store","tests.test_petstore","Tue Apr 08 15:33:56 GMT 2025","passed","Tue Apr 08 15:33:56 GMT 2025","TestPet","test_pet","",""
+"","5069","Delete an existing user","tests.test_petstore","Tue Apr 08 15:35:21 GMT 2025","passed","Tue Apr 08 15:35:26 GMT 2025","TestUser","test_user","",""
+"
+        Test for deleting a pet.
+        Steps:
+            1. Create a new pet object.
+            2. Add pet to the store.
+            3. Delete the pet using its ID.
+            4. Try to retrieve the pet by ID.
+            5. Assert that the response status code for deletion is 200.
+            6. Assert that retrieving the pet after deletion returns a 404.
+        ","3336","Delete a pet","tests.test_petstore","Tue Apr 08 15:34:11 GMT 2025","failed","Tue Apr 08 15:34:15 GMT 2025","TestPet","test_pet","",""
+"
+        Test for retrieving an order by its ID.
+        Steps:
+            1. Create a new order object.
+            2. Add the order to the store.
+            3. Retrieve the order by its ID.
+            4. Verify that the response status code is 200.
+            5. Validate the retrieved order's ID.
+        ","10253","Get order by ID","tests.test_petstore","Tue Apr 08 15:34:15 GMT 2025","passed","Tue Apr 08 15:34:25 GMT 2025","TestStore","test_store","",""
+"","96","Attempt to retrieve a non-existent user","tests.test_petstore","Tue Apr 08 15:35:06 GMT 2025","passed","Tue Apr 08 15:35:06 GMT 2025","TestUser","test_user","",""
+"
+        Test for updating a pet.
+        Steps:
+            1. Create a new pet object.
+            2. Add pet to the store.
+            3. Modify the pet's name and status.
+            4. Update the pet through the API.
+            5. Assert that the update was successful.
+            6. Verify the updated fields match the expected values.
+        ","5155","Update an existing pet","tests.test_petstore","Tue Apr 08 15:34:06 GMT 2025","passed","Tue Apr 08 15:34:11 GMT 2025","TestPet","test_pet","",""
+"","5069","Login with valid user credentials","tests.test_petstore","Tue Apr 08 15:35:26 GMT 2025","passed","Tue Apr 08 15:35:31 GMT 2025","TestUser","test_user","",""
+"","15198","Update an existing user's information","tests.test_petstore","Tue Apr 08 15:35:06 GMT 2025","failed","Tue Apr 08 15:35:21 GMT 2025","TestUser","test_user","",""
+"","5042","Add a new user to the system","tests.test_petstore","Tue Apr 08 15:34:45 GMT 2025","passed","Tue Apr 08 15:34:50 GMT 2025","TestUser","test_user","",""
+"
+        Test deleting a pet with a non-existent ID.
+        Steps:
+            1. Attempt to delete a pet with a non-existent ID.
+            2. Assert that the response status code is 404 (Not Found).
+            3. Verify the API correctly handles deletion of non-existent resources.
+        Expected: API should return 404 Not Found.
+        ","122","Delete pet with non-existent ID should return 404","tests.test_petstore","Tue Apr 08 15:34:15 GMT 2025","passed","Tue Apr 08 15:34:15 GMT 2025","TestPet","test_pet","",""
+"","32","Logout user from the system","tests.test_petstore","Tue Apr 08 15:35:31 GMT 2025","passed","Tue Apr 08 15:35:31 GMT 2025","TestUser","test_user","",""
+"
+        Test for deleting an order.
+        Steps:
+            1. Create a new order object.
+            2. Add the order to the store.
+            3. Delete the order.
+            4. Try to retrieve the deleted order by ID.
+            5. Verify that the deletion was successful.
+            6. Confirm that the deleted order no longer exists (should return 404).
+        ","20155","Delete an order","tests.test_petstore","Tue Apr 08 15:34:25 GMT 2025","failed","Tue Apr 08 15:34:45 GMT 2025","TestStore","test_store","",""
+"
+        Test for adding a pet with invalid status.
+        Steps:
+            1. Create a pet object with invalid status.
+            2. Attempt to add the pet to the store.
+            3. Assert that the status code is 400 or 500 (error).
+            4. Verify the API rejects invalid status values.
+        ","72","Adding a pet with invalid status should fail","tests.test_petstore","Tue Apr 08 15:33:56 GMT 2025","passed","Tue Apr 08 15:33:56 GMT 2025","TestPet","test_pet","",""
+"
+        Test retrieving a pet with a non-existent ID.
+        Steps:
+            1. Generate a non-existent pet ID.
+            2. Attempt to retrieve a pet with this ID.
+            3. Assert that the response status code is 404 (Not Found).
+            4. Verify that the response contains ""not found"" message.
+        Expected: API should return 404 Not Found.
+        ","49","Get pet with non-existent ID should return 404","tests.test_petstore","Tue Apr 08 15:34:06 GMT 2025","passed","Tue Apr 08 15:34:06 GMT 2025","TestPet","test_pet","",""
+"","0","test_sanity","tests","Tue Apr 08 15:35:31 GMT 2025","passed","Tue Apr 08 15:35:31 GMT 2025","TestSanity","test_sanity","",""
+"
+        Test for retrieving a pet by ID.
+        Steps:
+            1. Create a new pet object.
+            2. Add pet to the store.
+            3. Retrieve the pet by its ID using a retry mechanism.
+            4. Assert that the response status code is 200.
+            5. Assert that the retrieved pet has the same ID and name.
+        ","10323","Get pet by ID","tests.test_petstore","Tue Apr 08 15:33:56 GMT 2025","passed","Tue Apr 08 15:34:06 GMT 2025","TestPet","test_pet","",""

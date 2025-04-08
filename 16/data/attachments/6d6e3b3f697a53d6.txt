@@ -1,0 +1,1 @@
+{'id': None, 'category': Category(id=66, name='water'), 'name': 'Brad', 'photoUrls': ['https://picsum.photos/517/654'], 'tags': [], 'status': 'available'}
