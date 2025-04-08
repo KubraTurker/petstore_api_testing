@@ -13,7 +13,6 @@ class TestPet:
     @pytest.mark.positive
     @allure.story("Create Pets")
     @allure.title("Add a new pet to the store")
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_add_pet(self, app):
         """
         Test for adding a new pet.
@@ -47,7 +46,6 @@ class TestPet:
     @pytest.mark.negative
     @allure.story("Error Handling")
     @allure.title("Adding a pet with invalid status should fail")
-    @allure.severity(allure.severity_level.NORMAL)
     def test_add_pet_with_invalid_status(self, app):
         """
         Test for adding a pet with invalid status.
@@ -82,7 +80,6 @@ class TestPet:
     @pytest.mark.positive
     @allure.story("Retrieve Pets")
     @allure.title("Get pet by ID")
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_get_pet_by_id(self, app):
         """
         Test for retrieving a pet by ID.
@@ -102,6 +99,7 @@ class TestPet:
                 "Created Pet Data",
                 allure.attachment_type.TEXT,
             )
+            time.sleep(10)
 
         @allure.step("Wait for pet to appear with ID {pet_id}")
         def wait_for_pet_to_appear(pet_id, retries=5, delay=1):
@@ -138,7 +136,6 @@ class TestPet:
     @pytest.mark.negative
     @allure.story("Error Handling")
     @allure.title("Get pet with non-existent ID should return 404")
-    @allure.severity(allure.severity_level.NORMAL)
     def test_get_pet_with_nonexistent_id(self, app):
         """
         Test retrieving a pet with a non-existent ID.
@@ -174,7 +171,6 @@ class TestPet:
     @pytest.mark.positive
     @allure.story("Update Pets")
     @allure.title("Update an existing pet")
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_update_pet(self, app):
         """
         Test for updating a pet.
@@ -226,7 +222,6 @@ class TestPet:
     @pytest.mark.positive
     @allure.story("Delete Pets")
     @allure.title("Delete a pet")
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_delete_pet(self, app):
         """
         Test for deleting a pet.
@@ -284,7 +279,6 @@ class TestPet:
     @pytest.mark.negative
     @allure.story("Error Handling")
     @allure.title("Delete pet with non-existent ID should return 404")
-    @allure.severity(allure.severity_level.NORMAL)
     def test_delete_pet_with_nonexistent_id(self, app):
         """
         Test deleting a pet with a non-existent ID.

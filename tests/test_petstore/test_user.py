@@ -11,7 +11,6 @@ class TestUser:
     @pytest.mark.positive
     @allure.story("Create User")
     @allure.title("Add a new user to the system")
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_add_user(self, app):
         with allure.step("Create a new random user object"):
             data = User.random()
@@ -43,7 +42,6 @@ class TestUser:
     @pytest.mark.positive
     @allure.story("Get User")
     @allure.title("Retrieve a user by username")
-    @allure.severity(allure.severity_level.NORMAL)
     def test_get_user_by_username(self, app):
         with allure.step("Create and add a new user"):
             data = User.random()
@@ -59,13 +57,15 @@ class TestUser:
                 "Response Status Code",
                 allure.attachment_type.TEXT,
             )
+
+            time.sleep(5)
+
             assert res_get.status_code == 200
             assert res_get.data.username == data.username
 
     @pytest.mark.negative
     @allure.story("Get User")
     @allure.title("Attempt to retrieve a non-existent user")
-    @allure.severity(allure.severity_level.MINOR)
     def test_get_non_existent_user(self, app):
         with allure.step("Try to get a non-existent user"):
             username = "nonexistentuser123"
@@ -75,7 +75,6 @@ class TestUser:
     @pytest.mark.positive
     @allure.story("Update User")
     @allure.title("Update an existing user's information")
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_update_user(self, app):
         with allure.step("Create and add a user"):
             data = User.random()
@@ -105,7 +104,6 @@ class TestUser:
     @pytest.mark.positive
     @allure.story("Delete User")
     @allure.title("Delete an existing user")
-    @allure.severity(allure.severity_level.NORMAL)
     def test_delete_user(self, app):
         with allure.step("Create and add a user"):
             data = User.random()
@@ -121,7 +119,6 @@ class TestUser:
     @pytest.mark.negative
     @allure.story("Delete User")
     @allure.title("Attempt to delete a non-existent user")
-    @allure.severity(allure.severity_level.MINOR)
     def test_delete_non_existent_user(self, app):
         with allure.step("Try deleting a non-existent user"):
             username = "nonexistentuser123"
@@ -131,7 +128,6 @@ class TestUser:
     @pytest.mark.positive
     @allure.story("User Authentication")
     @allure.title("Login with valid user credentials")
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_user_login(self, app):
         with allure.step("Create and add a user"):
             data = User.random()
@@ -149,7 +145,6 @@ class TestUser:
     @pytest.mark.positive
     @allure.story("User Authentication")
     @allure.title("Logout user from the system")
-    @allure.severity(allure.severity_level.NORMAL)
     def test_user_logout(self, app):
         with allure.step("Logout from the system"):
             res_logout = app.user_api.logout()

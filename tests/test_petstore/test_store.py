@@ -13,7 +13,6 @@ class TestStore:
     @pytest.mark.positive
     @allure.story("Create Orders")
     @allure.title("Add a new order to the store")
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_add_order(self, app):
         """
         Test for adding a new order.
@@ -51,7 +50,6 @@ class TestStore:
     @pytest.mark.positive
     @allure.story("Retrieve Orders")
     @allure.title("Get order by ID")
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_get_order_by_id(self, app):
         """
         Test for retrieving an order by its ID.
@@ -109,7 +107,6 @@ class TestStore:
     @pytest.mark.negative
     @allure.story("Error Handling")
     @allure.title("Get non-existent order should return 404")
-    @allure.severity(allure.severity_level.NORMAL)
     def test_get_nonexistent_order(self, app):
         """
         Test for retrieving a non-existent order.
@@ -139,7 +136,6 @@ class TestStore:
     @pytest.mark.positive
     @allure.story("Delete Orders")
     @allure.title("Delete an order")
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_delete_order(self, app):
         """
         Test for deleting an order.
