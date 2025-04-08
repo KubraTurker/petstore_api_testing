@@ -49,6 +49,7 @@ brew install allure
 To execute the tests:
 ```commandline
 pytest
+pytest -n auto
 ```
 or if you want to use Allure Reports
 ```commandline
